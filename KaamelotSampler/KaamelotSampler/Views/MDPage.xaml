@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage
+    x:Class="KaamelotSampler.Views.MDPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:KaamelotSampler.Views">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu">
+            <StackLayout Margin="0,20,0,0">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text="MENU" />
+                <CollectionView
+                    Margin="0,20,0,0"
+                    ItemsSource="{Binding ListeMenus}"
+                    SelectedItem="{Binding SelectedMenu}"
+                    SelectionChanged="CollectionView_SelectionChanged"
+                    SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10">
+                                <Label FontSize="Large" Text="{Binding Title}" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail />
+</MasterDetailPage>

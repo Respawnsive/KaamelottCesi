@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KaamelotSampler.Views.ListSamplesPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="{Binding MyTitre}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding ClearCommand}"
+            IconImageSource="ic_share_white.png"
+            Order="Secondary"
+            Text="Partager" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Grid ColumnDefinitions="*,*, Auto" RowDefinitions="Auto">
+                <Entry
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Placeholder="Rechercher..."
+                    Text="{Binding SearchText}" />
+                <Picker
+                    Title="Personnage"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    ItemsSource="{Binding ListePerso}"
+                    SelectedItem="{Binding SelectedPerso}" />
+                <Button
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Command="{Binding ClearCommand}"
+                    Text="Clear" />
+            </Grid>
+
+            <RefreshView Command="{Binding ClearCommand}" IsRefreshing="{Binding IsBusy}">
+                <CollectionView
+                    ItemTemplate="{StaticResource SampleDtplSelector}"
+                    ItemsSource="{Binding ListeSaamples}"
+                    SelectedItem="{Binding CurrentSample}"
+                    SelectionChangedCommand="{Binding SelectionCommand}"
+                    SelectionMode="Single"
+                    VerticalOptions="Fill" />
+            </RefreshView>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

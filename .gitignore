@@ -3,3 +3,13 @@
 ################################################################################
 
 /.vs
+/KaamelotSampler/.vs/KaamelotSampler
+/KaamelotSampler/KaamelotSampler/bin
+/KaamelotSampler/KaamelotSampler/obj
+*.user
+/KaamelotSampler/KaamelotSampler.Android/bin
+/KaamelotSampler/KaamelotSampler.Android/obj
+/KaamelotSampler/KaamelotSampler.iOS/obj
+/KaamelotSampler/KaamelotSampler.UITests/bin/Debug
+/KaamelotSampler/KaamelotSampler.UITests/obj
+/KaamelotSampler/KaamelotSampler.UWP/obj

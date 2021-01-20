@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KaamelotSampler.Views.AboutPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:map="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+    Title="{Binding MyTitre}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                Padding="10"
+                FontSize="Large"
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
+                MaxLines="2"
+                Text="Application créée par les étudiants du CESI de Lille" />
+            <map:Map
+                x:Name="mymap"
+                HasRotationEnabled="True"
+                HasScrollEnabled="True"
+                HasZoomEnabled="True"
+                IsShowingUser="True">
+                <map:Map.Pins>
+                    <map:Pin
+                        Address="8 Boulevard Louis XIV 59777 Lille"
+                        Label="CESI Lille"
+                        Type="Place">
+                        <map:Pin.Position>
+                            <map:Position>
+                                <x:Arguments>
+                                    <x:Double>50.62901236535048</x:Double>
+                                    <x:Double>3.071320046022258</x:Double>
+                                </x:Arguments>
+                            </map:Position>
+                        </map:Pin.Position>
+                    </map:Pin>
+                </map:Map.Pins>
+            </map:Map>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

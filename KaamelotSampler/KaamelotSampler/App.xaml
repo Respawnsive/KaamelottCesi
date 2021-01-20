@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="KaamelotSampler.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:conv="clr-namespace:KaamelotSampler.Converter"
+    xmlns:dtpl="clr-namespace:KaamelotSampler.DatatemplateSelector">
+    <Application.Resources>
+
+        <Color x:Key="PrimaryColor">#333333</Color>
+        <Color x:Key="SecondaryColor">#A0A0A0</Color>
+        <Color x:Key="PrimaryTextColor">#EFECEC</Color>
+        <Color x:Key="SecondaryTextColor">Black</Color>
+        <Color x:Key="ActionColor">#EF8C08</Color>
+
+        <Style x:Key="TitleStyle" TargetType="Label">
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="TextColor" Value="{StaticResource ActionColor}" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+            <Setter Property="BorderColor" Value="{StaticResource ActionColor}" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="BorderWidth" Value="2" />
+            <Style.Triggers>
+                <Trigger TargetType="Button" Property="IsEnabled" Value="False">
+                    <Setter Property="TextColor" Value="{StaticResource SecondaryColor}" />
+                    <Setter Property="BorderColor" Value="{StaticResource SecondaryColor}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="BarTextColor" Value="{StaticResource PrimaryTextColor}" />
+        </Style>
+
+        <Style TargetType="ContentPage">
+            <Setter Property="BackgroundColor" Value="{StaticResource SecondaryColor}" />
+            <Setter Property="Padding" Value="5" />
+        </Style>
+
+        <DataTemplate x:Key="SamplesNormalDatatemplate">
+            <Grid
+                Padding="10"
+                ColumnDefinitions="Auto, *"
+                RowDefinitions="Auto, *">
+                <Image
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Grid.Column="0"
+                    Aspect="AspectFit"
+                    HeightRequest="80"
+                    Source="{Binding Imagefile}" />
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="10"
+                    LineBreakMode="TailTruncation"
+                    MaxLines="2"
+                    Style="{StaticResource TitleStyle}"
+                    Text="{Binding Title}" />
+
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="10"
+                    FontAttributes="Bold"
+                    LineBreakMode="NoWrap"
+                    Text="{Binding Episode}"
+                    TextColor="{Binding Episode, Converter={StaticResource EpisodeToColorConverter}}"
+                    VerticalOptions="End" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="SamplesHighlightedDatatemplate">
+            <Grid
+                Padding="10"
+                ColumnDefinitions="*, Auto"
+                RowDefinitions="Auto, *">
+                <Image
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Grid.Column="1"
+                    Aspect="AspectFit"
+                    HeightRequest="120"
+                    Source="{Binding Imagefile}" />
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="10"
+                    LineBreakMode="TailTruncation"
+                    MaxLines="2"
+                    Style="{StaticResource TitleStyle}"
+                    Text="{Binding Title}" />
+
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="10"
+                    FontAttributes="Bold"
+                    LineBreakMode="NoWrap"
+                    Text="{Binding Episode}"
+                    TextColor="{Binding Episode, Converter={StaticResource EpisodeToColorConverter}}"
+                    VerticalOptions="End" />
+            </Grid>
+        </DataTemplate>
+
+        <dtpl:SamplesDatatemplateSelector
+            x:Key="SampleDtplSelector"
+            HihtligtedDatatemplate="{StaticResource SamplesHighlightedDatatemplate}"
+            NormalDatatemplate="{StaticResource SamplesNormalDatatemplate}" />
+
+        <conv:EpisodeToColorConverter x:Key="EpisodeToColorConverter" />
+
+    </Application.Resources>
+</Application>
