@@ -28,7 +28,7 @@ namespace KaamelotSampler.ViewModels
             PlayMP3Command = new Command(PlayMP3CommandExecute);
             PlayTTSCommand = new Command(PlayTTSCommandExecute);
             ShareCommand = new Command(ShareCommandExecute);
-            MyTitre = $"Personnage : { currentSample.Character}";
+            MyTitre = $"Personnage sélectionné : { currentSample.Character}";
         }
 
 
